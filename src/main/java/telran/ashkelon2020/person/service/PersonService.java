@@ -1,5 +1,6 @@
 package telran.ashkelon2020.person.service;
 
+import telran.ashkelon2020.person.dto.CityPopulationDto;
 import telran.ashkelon2020.person.dto.PersonDto;
 
 public interface PersonService {
@@ -17,5 +18,7 @@ public interface PersonService {
 	Iterable<PersonDto> findPersonsByAges(int min, int max);
 	
 	Iterable<PersonDto> findPersonsByCity(String city);
+	
+	Iterable<CityPopulationDto> getCityPopulation();
 
 }

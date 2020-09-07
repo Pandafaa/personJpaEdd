@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import telran.ashkelon2020.person.dao.PersonRepository;
+import telran.ashkelon2020.person.dto.CityPopulationDto;
 import telran.ashkelon2020.person.dto.PersonDto;
 import telran.ashkelon2020.person.dto.PersonNotFoundException;
 import telran.ashkelon2020.person.model.Person;
@@ -81,6 +82,11 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.findByAddressCity(city)
 				.map(p -> modelMapper.map(p, PersonDto.class))
 				.collect(Collectors.toList());
+	}
+
+	@Override
+	public Iterable<CityPopulationDto> getCityPopulation() {
+		return personRepository.getCityPopulation();
 	}
 
 }

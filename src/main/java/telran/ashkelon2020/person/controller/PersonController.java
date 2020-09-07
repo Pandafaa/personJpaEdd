@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import telran.ashkelon2020.person.dto.CityPopulationDto;
 import telran.ashkelon2020.person.dto.PersonDto;
 import telran.ashkelon2020.person.service.PersonService;
 
@@ -29,30 +30,35 @@ public class PersonController {
 	public PersonDto findPersonById(@PathVariable Integer id) {
 		return personService.findPersonById(id);
 	}
-	
+
 	@PutMapping("/{id}/name/{name}")
 	public PersonDto editPersonName(@PathVariable Integer id, @PathVariable String name) {
 		return personService.editPerson(id, name);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public PersonDto deletePerson(@PathVariable Integer id) {
 		return personService.removePerson(id);
 	}
-	
+
 	@GetMapping("/name/{name}")
 	public Iterable<PersonDto> findSameNamePersons(@PathVariable String name) {
 		return personService.findPersonsByName(name);
 	}
-	
+
 	@GetMapping("/ages/{min}/{max}")
 	public Iterable<PersonDto> findPersonsByAges(@PathVariable int min, @PathVariable int max) {
 		return personService.findPersonsByAges(min, max);
 	}
-	
+
 	@GetMapping("/city/{city}")
 	public Iterable<PersonDto> findPersonsByCity(@PathVariable String city) {
 		return personService.findPersonsByCity(city);
+	}
+
+	@GetMapping("/population/city")
+	public Iterable<CityPopulationDto> getCityPopulation() {
+		return personService.getCityPopulation();
 	}
 
 }
