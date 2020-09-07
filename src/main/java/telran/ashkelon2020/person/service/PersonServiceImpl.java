@@ -23,13 +23,13 @@ public class PersonServiceImpl implements PersonService {
 
 	@Override
 	public boolean addPerson(PersonDto personDto) {
-		Person person = modelMapper.map(personDto, Person.class);
-		if (person == null) {
-			personRepository.save(person);
-			return true;
-		} else {
+		if (personRepository.existsById(personDto.getId())) {
 			return false;
 		}
+		Person person = modelMapper.map(personDto, Person.class);
+		personRepository.save(person);
+		return true;
+
 	}
 
 	@Override
@@ -65,7 +65,8 @@ public class PersonServiceImpl implements PersonService {
 	public Iterable<PersonDto> findPersonsByAges(int min, int max) {
 		LocalDate from = LocalDate.now().minusYears(max);
 		LocalDate to = LocalDate.now().minusYears(min);
-		return personRepository.findByBirthDateBetween(from, to).stream()
+		return personRepository.findByBirthDateBetween(from, to)
+				.stream()
 				.map(p -> modelMapper.map(p, PersonDto.class))
 				.collect(Collectors.toList());
 	}
