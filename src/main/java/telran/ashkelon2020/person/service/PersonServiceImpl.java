@@ -75,4 +75,12 @@ public class PersonServiceImpl implements PersonService {
 				.collect(Collectors.toList());
 	}
 
+	@Override
+	@Transactional(readOnly = true)
+	public Iterable<PersonDto> findPersonsByCity(String city) {
+		return personRepository.findByAddressCity(city)
+				.map(p -> modelMapper.map(p, PersonDto.class))
+				.collect(Collectors.toList());
+	}
+
 }
