@@ -89,4 +89,16 @@ public class PersonServiceImpl implements PersonService {
 		return personRepository.getCityPopulation();
 	}
 
+	@Override
+	public Iterable<PersonDto> findEmployeeBySalary(int min, int max) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Iterable<PersonDto> getChildren() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
