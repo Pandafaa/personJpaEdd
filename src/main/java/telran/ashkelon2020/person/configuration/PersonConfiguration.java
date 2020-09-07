@@ -12,6 +12,7 @@ public class PersonConfiguration {
 	public ModelMapper modelMapper() {
 		ModelMapper modelMapper = new ModelMapper();
 		modelMapper.getConfiguration()
+	//	.setFullTypeMatchingRequired(false)
 					.setFieldMatchingEnabled(true)
 					.setFieldAccessLevel(AccessLevel.PRIVATE);
 		return modelMapper;

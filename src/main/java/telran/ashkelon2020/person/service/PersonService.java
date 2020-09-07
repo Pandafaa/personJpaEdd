@@ -1,6 +1,8 @@
 package telran.ashkelon2020.person.service;
 
+import telran.ashkelon2020.person.dto.ChildDto;
 import telran.ashkelon2020.person.dto.CityPopulationDto;
+import telran.ashkelon2020.person.dto.EmployeeDto;
 import telran.ashkelon2020.person.dto.PersonDto;
 
 public interface PersonService {
@@ -21,8 +23,8 @@ public interface PersonService {
 	
 	Iterable<CityPopulationDto> getCityPopulation();
 	
-	Iterable<PersonDto> findEmployeeBySalary(int min, int max);
+	Iterable<EmployeeDto> findEmployeeBySalary(int min, int max);
 	
-	Iterable<PersonDto> getChildren();
+	Iterable<ChildDto> getChildren();
 
 }
